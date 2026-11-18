@@ -15,7 +15,7 @@ Vehicle assumptions: **500-mile maximum range** and **10 miles per gallon**.
 Requires Python 3.12+.
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/ssachi12/fuel-route-api.git
 cd fuel-route-api
 
 python3.12 -m venv .venv
