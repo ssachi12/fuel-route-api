@@ -4,6 +4,7 @@ from django.core.cache import cache
 from .external import resolve_location, get_route
 from .stations import get_index
 from .planner import plan_fuel_stops
+import time 
 
 
 def build_plan(start_text, finish_text):

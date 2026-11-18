@@ -9,3 +9,12 @@ class Station(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=3)
     lat = models.FloatField(null=True)
     lng = models.FloatField(null=True)
+    
+class City(models.Model):
+    name = models.CharField(max_length=100)   # normalized
+    state = models.CharField(max_length=2)
+    lat = models.FloatField()
+    lng = models.FloatField()
+
+    class Meta:
+        indexes = [models.Index(fields=["name", "state"])]    

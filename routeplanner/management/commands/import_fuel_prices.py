@@ -3,7 +3,7 @@ from decimal import Decimal, InvalidOperation
 
 from django.core.management.base import BaseCommand
 from django.db import transaction
-
+from routeplanner.services.names import norm_city
 from routeplanner.models import Station
 
 US_STATES = {
@@ -11,17 +11,6 @@ US_STATES = {
     "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND",
     "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY", "DC",
 }
-
-# Common abbreviations in the price file vs. the full words GeoNames uses
-PREFIXES = {"st": "saint", "ste": "sainte", "ft": "fort", "mt": "mount"}
-
-
-def norm_city(name):
-    """Lowercase, collapse spaces, drop periods, expand St./Ft./Mt. so both files compare equal."""
-    words = name.replace(".", " ").lower().split()
-    if words and words[0] in PREFIXES:
-        words[0] = PREFIXES[words[0]]
-    return " ".join(words)
 
 
 def load_cities(path):
